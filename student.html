@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard | EduGramin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4faff;
+    }
+
+    .dash-header {
+      text-align: center;
+      background: #e0f1ff;
+      padding: 20px 10px 10px;
+      border-bottom: 2px solid #c9dbee;
+      position: relative;
+    }
+
+    .logo {
+      width: 130px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    .dash-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #1c3879;
+    }
+
+    .logout {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      text-decoration: none;
+      background-color: #ff5959;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #d94444;
+    }
+
+    .dashboard {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #2a2a2a;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      line-height: 1.8;
+    }
+
+    ul li {
+      background: #eef6ff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #1f3c88;
+      font-weight: 500;
+    }
+
+    ul li a:hover {
+      text-decoration: underline;
+      color: #153074;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .dash-header h1 {
+        font-size: 1.4rem;
+      }
+
+      .logout {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="dash-header">
+    <img src="assets/logo.png" alt="EduGramin Logo" class="logo" />
+    <h1>👨‍🎓 EduGramin – Student Dashboard</h1>
+    <a href="login.html" class="logout">Logout</a>
+  </header>
+
+  <section class="dashboard">
+    <div class="card">
+      <h3>📘 My Lessons</h3>
+      <ul>
+        <li>Mathematics – Fractions</li>
+        <li>Science – Plants & Animals</li>
+        <li>English – Reading Practice</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Take Quiz</h3>
+      <ul>
+        <li><a href="https://www.mathopolis.com/questions/quizzes.php" target="_blank">Math Quiz</a></li>
+        <li><a href="https://www.britannica.com/quiz/science-quiz" target="_blank">Science Quiz</a></li>
+        <li><a href="https://www.sofolympiadtrainer.com/gk-club/gk-quiz-list.jsp" target="_blank">General Knowledge</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📊 Progress Report</h3>
+      <p>You have completed 3 out of 5 lessons this week.</p>
+    </div>
+  </section>
+</body>
+</html>

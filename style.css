@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+form {
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 100%;
+}
+button {
+  padding: 0.5rem;
+  width: 100%;
+  background: teal;
+  color: white;
+  border: none;
+}

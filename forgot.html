@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forgot Password | Secure Access</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      animation: gradientShift 15s ease infinite alternate;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-card {
+      backdrop-filter: blur(8px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .login-card:hover {
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .input-field {
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .input-field:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      transition: .5s;
+    }
+
+    .btn-primary:hover::after {
+      left: 100%;
+    }
+
+    .floating-label {
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    input:focus ~ .floating-label,
+    input:not(:placeholder-shown) ~ .floating-label {
+      transform: translateY(-1.5rem) scale(0.85);
+      color: #4f46e5;
+    }
+
+    .error-message {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .show-error {
+      max-height: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .login-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card w-full max-w-md p-8 rounded-xl bg-white/90">
+    <div class="text-center mb-10">
+      <img src="assets/logo.png" class="assets/logo.png" width="80" height="80" alt="Logo" />
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">Forgot Password?</h1>
+      <p class="text-gray-600">We'll send you a link to reset it</p>
+    </div>
+
+    <form id="forgotForm" class="space-y-6">
+      <div class="relative">
+        <input type="email" id="email" placeholder=" " required
+               class="input-field w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 text-gray-700 focus:outline-none">
+        <label for="email" class="floating-label absolute left-4 top-3 text-gray-500">Email Address</label>
+        <div id="emailError" class="error-message text-sm text-red-600 mt-1"></div>
+      </div>
+
+      <button type="submit" class="btn-primary w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-medium transition duration-300">
+        Send Reset Link
+      </button>
+    </form>
+
+    <div class="mt-8 text-center text-sm text-gray-500">
+      Remembered your password?
+      <a href="signup.html" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('forgotForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const email = emailInput.value.trim();
+      let isValid = true;
+
+      // Reset
+      emailError.textContent = '';
+      emailError.classList.remove('show-error');
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailError.textContent = 'Please enter a valid email address';
+        emailError.classList.add('show-error');
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('A password reset link has been sent to your email.');
+        const btn = document.querySelector('.btn-primary');
+        btn.textContent = '✓ Link Sent';
+        btn.style.backgroundColor = '#10b981';
+
+        setTimeout(() => {
+          btn.textContent = 'Send Reset Link';
+          btn.style.backgroundColor = '#4f46e5';
+        }, 2000);
+      }
+    });
+
+    // Floating label interaction
+    document.querySelectorAll('input[placeholder=" "]').forEach(input => {
+      input.addEventListener('focus', function () {
+        this.nextElementSibling.classList.add('text-indigo-600');
+      });
+      input.addEventListener('blur', function () {
+        this.nextElementSibling.classList.remove('text-indigo-600');
+      });
+    });
+  </script>
+</body>
+</html>

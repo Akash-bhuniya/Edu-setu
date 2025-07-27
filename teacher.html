@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard | EduGramin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f9ff;
+    }
+
+    /* Header */
+    .dash-header {
+      text-align: center;
+      background: #e8f0ff;
+      padding: 20px 10px 10px;
+      border-bottom: 2px solid #d0dce7;
+      position: relative;
+    }
+
+    .logo {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    .dash-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #1f3c88;
+    }
+
+    .logout {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      text-decoration: none;
+      background-color: #ff5959;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #d94444;
+    }
+
+    /* Dashboard section */
+    .dashboard {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #2a2a2a;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #1f3c88;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #153074;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    @media (max-width: 600px) {
+      .dash-header h1 {
+        font-size: 1.4rem;
+      }
+
+      .logout {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="dash-header">
+    <img src="assets/logo.png" alt="Edu-setu Logo" class="logo" />
+    <h1>👩‍🏫 EduGramin – Teacher Dashboard</h1>
+    <a href="login.html" class="logout">Logout</a>
+  </header>
+
+  <section class="dashboard">
+    <div class="card">
+      <h3>📤 Upload Materials</h3>
+      <form>
+        <label>Lesson Title:</label>
+        <input type="text" placeholder="e.g. Class 5 - Fractions" />
+        <label>File:</label>
+        <input type="file" />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>📈 Student Progress</h3>
+      <p>10 students completed last week's assignments.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧑‍🎓 Assign Homework</h3>
+      <textarea placeholder="Write homework instructions..."></textarea>
+      <button>Send to Students</button>
+    </div>
+  </section>
+</body>
+</html>

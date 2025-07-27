@@ -1,0 +1,119 @@
+/* Reset + Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e6f0ff, #f4f9ff);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.dash-header {
+  background: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dash-header h1 {
+  font-size: 1.4rem;
+}
+.logout {
+  background: #fff;
+  color: #004080;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Dashboard Grid */
+.dashboard {
+  flex: 1;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s forwards;
+}
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #003366;
+}
+.card ul {
+  padding-left: 1.2rem;
+}
+.card ul li {
+  margin: 0.4rem 0;
+}
+.card a {
+  color: #004080;
+  text-decoration: underline;
+}
+
+/* Forms */
+form label, form input, form button, textarea {
+  display: block;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  background: #004080;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background: #003366;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .logout {
+    margin-top: 0.5rem;
+  }
+}

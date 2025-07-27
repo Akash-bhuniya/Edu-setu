@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Secure Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(''),
+                             url('');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            animation: gradientShift 15s ease infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-card {
+            backdrop-filter: blur(8px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .login-card:hover {
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .input-field {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .input-field:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+            transition: .5s;
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        .floating-label {
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        input:focus ~ .floating-label,
+        input:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #4f46e5;
+        }
+
+        .error-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .show-error {
+            max-height: 2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card w-full max-w-md p-8 rounded-xl bg-white/90">
+        <div class="text-center mb-10">
+            <img src="assets/logo.png" alt="assets/logo.png" class="mx-auto mb-4 rounded-lg" width="80" height="80">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
+            <p class="text-gray-600">Sign in to your account to continue</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div class="relative">
+                <input type="email" id="email" placeholder=" " required
+                    class="input-field w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 text-gray-700 focus:outline-none">
+                <label for="email" class="floating-label absolute left-4 top-3 text-gray-500">Email Address</label>
+                <div id="emailError" class="error-message text-sm text-red-600 mt-1"></div>
+            </div>
+
+            <div class="relative">
+                <input type="password" id="password" placeholder=" " required
+                    class="input-field w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 text-gray-700 focus:outline-none">
+                <label for="password" class="floating-label absolute left-4 top-3 text-gray-500">Password</label>
+                <div id="passwordError" class="error-message text-sm text-red-600 mt-1"></div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" 
+                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                </div>
+                <div class="text-sm">
+                    <a href="forgot.html" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-medium transition duration-300">
+                Sign In
+            </button>
+        </form>
+
+        <div class="mt-8">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-white/90 text-gray-500">Or continue with</span>
+                </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-3">
+                <a href="#" class="social-icon w-full inline-flex justify-center py-2 px-4 border border-gray-200 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304.156.3.257.63.257.972 0 .341-.098.652-.258.955C4.482 10.452 5.133 9.42 5.955 8.55a7.657 7.657 0 0 1-1.89-.75v-.058a5.764 5.764 0 0 0 3.75 1.337 6.17 6.17 0 0 0 2.27-.454c1.313-.45 2.37-1.313 3.04-2.48.666-1.173.863-2.514.805-4.045-.057-.24-.114-.47-.17-.685h-.01z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon w-full inline-flex justify-center py-2 px-4 border border-gray-200 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0 0 20 3.92a8.19 8.19 0 0 1-2.357.646 4.118 4.118 0 0 0 1.804-2.27 8.224 8.224 0 0 1-2.605.996 4.107 4.107 0 0 0-6.993 3.743 11.65 11.65 0 0 1-8.457-4.287 4.106 4.106 0 0 0 1.27 5.477A4.073 4.073 0 0 1 0 7.89v.052a4.105 4.105 0 0 0 3.292 4.022 4.095 4.095 0 0 1-1.853.07 4.108 4.108 0 0 0 3.834 2.85A8.233 8.233 0 0 1 0 16.407a11.616 11.616 0 0 0 6.29 1.84"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon w-full inline-flex justify-center py-2 px-4 border border-gray-200 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition duration-300">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0110 4.837c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.933.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.14 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-sm text-gray-500">
+            Don't have an account? <a href="login.html" class="font-medium text-indigo-600 hover:text-indigo-500">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error states
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.remove('show-error');
+                el.textContent = '';
+            });
+            
+            // Get form values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            let isValid = true;
+            
+            // Email validation
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                document.getElementById('emailError').classList.add('show-error');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('emailError').classList.add('show-error');
+                isValid = false;
+            }
+            
+            // Password validation
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password is required';
+                document.getElementById('passwordError').classList.add('show-error');
+                isValid = false;
+            } else if (password.length < 8) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters';
+                document.getElementById('passwordError').classList.add('show-error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Form is valid - submit data (in a real app, you would send to server)
+                alert('Login successful! Redirecting...');
+            // Save role in localStorage during signup
+localStorage.setItem("role", role);
+
+// During login, get it back:
+const role = localStorage.getItem("role");
+
+if (role === "student") {
+  window.location.href = "student.html";
+} else {
+  window.location.href = "teacher.html";
+}
+
+                // Animation for success
+                const button = document.querySelector('.btn-primary');
+                button.textContent = '✓ Success!';
+                button.style.backgroundColor = '#10b981';
+                
+                setTimeout(() => {
+                    button.textContent = 'Sign In';
+                    button.style.backgroundColor = '#4f46e5';
+                }, 2000);
+            }
+        });
+        
+        // Add floating label functionality
+        document.querySelectorAll('input[placeholder=" "]').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.nextElementSibling.classList.add('text-indigo-600');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.nextElementSibling.classList.remove('text-indigo-600');
+            });
+        });
+        function handleSignup(event) {
+  event.preventDefault();
+
+  // Check fields, validate passwords...
+
+  // Redirect after success
+  window.location.href = "index.html";
+}
+
+    </script>
+</body>
+</html>
