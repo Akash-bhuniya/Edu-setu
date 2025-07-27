@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu-setu - Offline SchoolKit</title>
+  <link rel="stylesheet" href="design.css" />
+  <link rel="icon" href="assets/favicon.icon" />
+
+  <link rel="manifest" href="assets/manifest.json" />
+<meta name="theme-color" content="#1f2937" />
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="Edu-setu Logo" class="logo" />
+        <h1>Edu-setu</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" data-en="Home" data-hi="मुखपृष्ठ">Home</a></li>
+          <li><a href="#features" data-en="Features" data-hi="विशेषताएँ">Features</a></li>
+          <li><a href="login.html" data-en="Login" data-hi="लॉगिन">Login</a></li>
+        </ul>
+      </nav>
+      <select id="languageToggle">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+  </header>
+    <section class="hero section-fade">
+
+    <div class="container">
+      <h2 data-en="📡 Semi-offline Learning, Unlimited Possibilities" data-hi="📡 सेमी-ऑफलाइन लर्निंग, अनगिनत संभावनाएं">📡 Semi-offline Learning, Unlimited Possibilities</h2>
+      <p data-en="Empowering students in every corner with offline education tools." data-hi="हर कोने में छात्रों को ऑफलाइन शिक्षा उपकरणों से सशक्त बनाना।">Empowering students in every corner with offline education tools.</p>
+      <a href="login.html" class="btn" data-en="Get Started" data-hi="शुरू करें">Get Started</a>
+    </div>
+  </section>
+
+<section id="features" class="features section-fade"></section>
+    <div class="container">
+      <h3 data-en="Features" data-hi="विशेषताएँ">Features</h3>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4 data-en="📚 Offline Content" data-hi="📚 ऑफलाइन कंटेंट">📚 Offline Content</h4>
+          <p data-en="Lessons and quizzes work without internet." data-hi="पाठ और क्विज़ बिना इंटरनेट के काम करते हैं।">Lessons and quizzes work without internet.</p>
+        </div>
+        <div class="feature-box">
+          <h4 data-en="🧑‍🏫 Teacher Tools" data-hi="🧑‍🏫 शिक्षक उपकरण">🧑‍🏫 Teacher Tools</h4>
+          <p data-en="Upload lessons, track progress, assign homework." data-hi="पाठ अपलोड करें, प्रगति ट्रैक करें, होमवर्क सौंपें।">Upload lessons, track progress, assign homework.</p>
+        </div>
+        <div class="feature-box">
+          <h4 data-en="📊 Student Reports" data-hi="📊 छात्र रिपोर्ट">📊 Student Reports</h4>
+          <p data-en="Progress reports accessible anytime." data-hi="प्रगति रिपोर्ट कभी भी एक्सेस की जा सकती है।">Progress reports accessible anytime.</p>
+        </div>
+        <div class="feature-box">
+          <h4 data-en="🌐 Multi-language" data-hi="🌐 बहुभाषी">🌐 Multi-language</h4>
+          <p data-en="Available in Hindi, English and more." data-hi="हिंदी, अंग्रेज़ी और अधिक में उपलब्ध।">Available in Hindi, English and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works section-fade"></section>
+    <div class="container">
+      <h3 data-en="How It Works" data-hi="कैसे काम करता है">How It Works</h3>
+      <ol>
+        <li data-en="📥 Students receive content via USB or local install" data-hi="📥 छात्र USB या लोकल इंस्टॉल के जरिए सामग्री प्राप्त करते हैं">📥 Students receive content via USB or local install</li>
+        <li data-en="📖 Study offline using dashboard" data-hi="📖 डैशबोर्ड का उपयोग करके ऑफलाइन अध्ययन करें">📖 Study offline using dashboard</li>
+        <li data-en="🧑‍🏫 Teachers review & sync updates" data-hi="🧑‍🏫 शिक्षक समीक्षा करते हैं और अपडेट सिंक करते हैं">🧑‍🏫 Teachers review & sync updates</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <footer class="section-fade"></footer>
+      <p data-en="© 2025 Edu-setu | Empowering Education Everywhere" data-hi="© 2025 Edu-setu | हर जगह शिक्षा को सशक्त बनाना">© 2025 Edu-setu | Empowering Education Everywhere</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('languageToggle');
+
+    toggle.addEventListener('change', () => {
+      const lang = toggle.value;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".section-fade").forEach(section => {
+    observer.observe(section);
+  });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((reg) => console.log("✅ Service Worker registered:", reg))
+      .catch((err) => console.error("❌ Service Worker error:", err));
+  });
+}
+
+  </script>
+</body>
+</html>
